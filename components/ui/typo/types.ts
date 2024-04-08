@@ -7,19 +7,19 @@ export interface ParagraphProps extends HTMLAttributes<HTMLParagraphElement> {}
 export interface BlockquoteProps extends HTMLAttributes<HTMLQuoteElement> {}
 
 export interface TableProps extends HTMLAttributes<HTMLTableElement> {
-	container?: HTMLAttributes<HTMLDivElement>;
+  container?: HTMLAttributes<HTMLDivElement>;
 }
 
 export interface TableHeadProps
-	extends HTMLAttributes<HTMLTableSectionElement> {}
+  extends HTMLAttributes<HTMLTableSectionElement> {}
 
 export interface TableRowProps extends HTMLAttributes<HTMLTableRowElement> {}
 
 export interface TableHeaderProps
-	extends HTMLAttributes<HTMLTableCellElement> {}
+  extends HTMLAttributes<HTMLTableCellElement> {}
 
 export interface TableBodyProps
-	extends HTMLAttributes<HTMLTableSectionElement> {}
+  extends HTMLAttributes<HTMLTableSectionElement> {}
 
 export interface TableCellProps extends HTMLAttributes<HTMLTableCellElement> {}
 
@@ -34,3 +34,5 @@ export interface LeadProps extends HTMLAttributes<HTMLParagraphElement> {}
 export interface LargeProps extends HTMLAttributes<HTMLDivElement> {}
 
 export interface SmallProps extends HTMLAttributes<HTMLElement> {}
+
+export interface MutedProps extends HTMLAttributes<HTMLDivElement> {}

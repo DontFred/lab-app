@@ -1,19 +1,37 @@
 import { cn } from "@/lib/utils";
+
 import type {
   BlockquoteProps,
   HeadingProps,
+  InlineCodeProps,
+  LargeProps,
+  LeadProps,
+  ListProps,
+  MutedProps,
   ParagraphProps,
+  SmallProps,
   TableBodyProps,
   TableCellProps,
-  TableHeadProps,
   TableHeaderProps,
+  TableHeadProps,
   TableProps,
   TableRowProps,
 } from "./types";
 
+/**
+ * Heading 1
+ * @param HeadingProps - Has all HTML heading attributes.
+ * @param HeadingProps.className - The additional class name of the heading. (additional class will get merged by cn()).
+ * @param HeadingProps.children - The text content of the heading. Default is "Heading 1 Placeholder".
+ * @returns The heading element.
+ * @example
+ *  <TypographyH1>
+ *      This is a heading 1
+ *  </TypographyH1>
+ */
 export function TypographyH1({
-  className,
   children = "Heading 1 Placeholder",
+  className,
   ...rest
 }: HeadingProps) {
   return (
@@ -29,9 +47,20 @@ export function TypographyH1({
   );
 }
 
+/**
+ * Heading 2
+ * @param HeadingProps - Has all HTML heading attributes.
+ * @param HeadingProps.className - The additional class name of the heading. (additional class will get merged by cn()).
+ * @param HeadingProps.children - The text content of the heading. Default is "Heading 2 Placeholder".
+ * @returns The heading element.
+ * @example
+ *  <TypographyH2>
+ *      This is a heading 2
+ *  </TypographyH2>
+ */
 export function TypographyH2({
-  className,
   children = "Heading 2 Placeholder",
+  className,
   ...rest
 }: HeadingProps) {
   return (
@@ -47,9 +76,20 @@ export function TypographyH2({
   );
 }
 
+/**
+ * Heading 3
+ * @param HeadingProps - Has all HTML heading attributes.
+ * @param HeadingProps.className - The additional class name of the heading. (additional class will get merged by cn()).
+ * @param HeadingProps.children - The text content of the heading. Default is "Heading 3 Placeholder".
+ * @returns The heading element.
+ * @example
+ *  <TypographyH3>
+ *      This is a heading 3
+ *  </TypographyH3>
+ */
 export function TypographyH3({
-  className,
   children = "Heading 3 Placeholder",
+  className,
   ...rest
 }: HeadingProps) {
   return (
@@ -65,9 +105,20 @@ export function TypographyH3({
   );
 }
 
+/**
+ * Heading 4
+ * @param HeadingProps - Has all HTML heading attributes.
+ * @param HeadingProps.className - The additional class name of the heading. (additional class will get merged by cn()).
+ * @param HeadingProps.children - The text content of the heading. Default is "Heading 4 Placeholder".
+ * @returns The heading element.
+ * @example
+ *  <TypographyH4>
+ *      This is a heading 4
+ *  </TypographyH4>
+ */
 export function TypographyH4({
-  className,
   children = "Heading 4 Placeholder",
+  className,
   ...rest
 }: HeadingProps) {
   return (
@@ -83,9 +134,20 @@ export function TypographyH4({
   );
 }
 
+/**
+ * Paragraph
+ * @param ParagraphProps - Has all HTML Paragraph attributes.
+ * @param ParagraphProps.className - The additional class name of the Paragraph. (additional class will get merged by cn()).
+ * @param ParagraphProps.children - The text content of the Paragraph. Default is "Paragraph Placeholder".
+ * @returns A JSX element.
+ * @example
+ *  <TypographyP>
+ *      This is a paragraph
+ *  </TypographyP>
+ */
 export function TypographyP({
-  className,
   children = "Paragraph Placeholder",
+  className,
   ...rest
 }: ParagraphProps) {
   return (
@@ -98,9 +160,20 @@ export function TypographyP({
   );
 }
 
+/**
+ * Blockquote
+ * @param BlockquoteProps - Has all HTML Blockquote attributes.
+ * @param BlockquoteProps.className - The additional class name of the Blockquote. (additional class will get merged by cn()).
+ * @param BlockquoteProps.children - The text content of the Blockquote. Default is "Blockquote Placeholder".
+ * @returns A JSX element.
+ * @example
+ *  <TypographyBlockquote>
+ *      This is a blockquote
+ *  </TypographyBlockquote>
+ */
 export function TypographyBlockquote({
-  className,
   children = "Blockquote Placeholder",
+  className,
   ...rest
 }: BlockquoteProps) {
   return (
@@ -113,7 +186,19 @@ export function TypographyBlockquote({
   );
 }
 
-export function Table({ className, children, container, ...rest }: TableProps) {
+/**
+ * Table
+ * @param TableProps - Has all HTML Table attributes.
+ * @param TableProps.className - The additional class name of the Table. (additional class will get merged by cn()).
+ * @param TableProps.children - The children of the Table.
+ * @param TableProps.container - To change the props of the container div.
+ * @returns A JSX element.
+ * @example
+ *  <Table>
+ *    ...
+ *  </Table>
+ */
+export function Table({ children, className, container, ...rest }: TableProps) {
   const { className: containerClassName, ...containerRest } = container ?? {};
   return (
     <div
@@ -127,10 +212,31 @@ export function Table({ className, children, container, ...rest }: TableProps) {
   );
 }
 
+/**
+ * Table Head
+ * @param TableHeadProps - Has all HTML Table Head attributes.
+ * @param TableHeadProps.children - The children of the Table Head.
+ * @returns A JSX element.
+ * @example
+ *  <THead>
+ *    ...
+ *  </THead>
+ */
 export function THead({ children, ...rest }: TableHeadProps) {
   return <thead {...rest}>{children}</thead>;
 }
 
+/**
+ * Table Row
+ * @param TableRowProps - Has all HTML Table Row attributes.
+ * @param TableRowProps.children - The children of the Table Row.
+ * @param TableRowProps.className - The additional class name of the Table Row. (additional class will get merged by cn()).
+ * @returns A JSX element.
+ * @example
+ *  <TR>
+ *    ...
+ *  </TR>
+ */
 export function TR({ children, className, ...rest }: TableRowProps) {
   return (
     <tr className={cn("m-0 border-t p-0 even:bg-muted", className)} {...rest}>
@@ -139,7 +245,18 @@ export function TR({ children, className, ...rest }: TableRowProps) {
   );
 }
 
-export function TH({ className, children, ...rest }: TableHeaderProps) {
+/**
+ * Table Header
+ * @param TableHeaderProps - Has all HTML Table Header attributes.
+ * @param TableHeaderProps.children - The children of the Table Header.
+ * @param TableHeaderProps.className - The additional class name of the Table Header. (additional class will get merged by cn()).
+ * @returns A JSX element.
+ * @example
+ *  <TH>
+ *    ...
+ *  </TH>
+ */
+export function TH({ children, className, ...rest }: TableHeaderProps) {
   return (
     <th
       className={cn(
@@ -153,10 +270,31 @@ export function TH({ className, children, ...rest }: TableHeaderProps) {
   );
 }
 
+/**
+ * Table Body
+ * @param TableBodyProps - Has all HTML Table Body attributes.
+ * @param TableBodyProps.children - The children of the Table Body.
+ * @returns A JSX element.
+ * @example
+ *  <TBody>
+ *    ...
+ *  </TBody>
+ */
 export function TBody({ children, ...rest }: TableBodyProps) {
   return <tbody {...rest}>{children}</tbody>;
 }
 
+/**
+ * Table Cell
+ * @param TableCellProps - Has all HTML Table Cell attributes.
+ * @param TableCellProps.children - The children of the Table Cell.
+ * @param TableCellProps.className - The additional class name of the Table Cell. (additional class will get merged by cn()).
+ * @returns A JSX element.
+ * @example
+ *  <TD>
+ *    ...
+ *  </TD>
+ */
 export function TD({ children, className, ...rest }: TableCellProps) {
   return (
     <td
@@ -164,49 +302,152 @@ export function TD({ children, className, ...rest }: TableCellProps) {
         "border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right",
         className
       )}
-    ></td>
+      {...rest}
+    >
+      {children}
+    </td>
   );
 }
 
-export function TypographyList() {
+/**
+ * List
+ * @param ListProps - Has all HTML Unorderd List attributes.
+ * @param ListProps.className - The additional class name of the List. (additional class will get merged by cn()).
+ * @param ListProps.children - The children of the List.
+ * @returns A JSX element.
+ * @example
+ *  <TypographyList>
+ *      ...
+ *  </TypographyList>
+ */
+export function TypographyList({ children, className, ...rest }: ListProps) {
   return (
-    <ul className="my-6 ml-6 list-disc [&>li]:mt-2">
-      <li>1st level of puns: 5 gold coins</li>
-      <li>2nd level of jokes: 10 gold coins</li>
-      <li>3rd level of one-liners : 20 gold coins</li>
+    <ul className={cn("my-6 ml-6 list-disc [&>li]:mt-2", className)} {...rest}>
+      {children}
     </ul>
   );
 }
 
-export function TypographyInlineCode() {
+/**
+ * Inline Code
+ * @param InlineCodeProps - Has all HTML Inline Code attributes.
+ * @param InlineCodeProps.className - The additional class name of the Inline Code. (additional class will get merged by cn()).
+ * @param InlineCodeProps.children - The text content of the Inline Code. Default is "Inline Code Placeholder".
+ * @returns A JSX element.
+ * @example
+ *  <TypographyInlineCode>
+ *      This is a Inline Code
+ *  </TypographyInlineCode>
+ */
+export function TypographyInlineCode({
+  children = "Inline Code Placeholder",
+  className,
+  ...rest
+}: InlineCodeProps) {
   return (
-    <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold">
-      @radix-ui/react-alert-dialog
+    <code
+      className={cn(
+        "relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold",
+        className
+      )}
+      {...rest}
+    >
+      {children}
     </code>
   );
 }
 
-export function TypographyLead() {
+/**
+ * Lead
+ * @param LeadProps - Has all HTML Lead attributes.
+ * @param LeadProps.className - The additional class name of the Lead. (additional class will get merged by cn()).
+ * @param LeadProps.children - The text content of the Lead. Default is "Lead Placeholder".
+ * @returns A JSX element.
+ * @example
+ *  <TypographyLead>
+ *      This is a Lead
+ *  </TypographyLead>
+ */
+export function TypographyLead({
+  children = "Lead Placeholder",
+  className,
+  ...rest
+}: LeadProps) {
   return (
-    <p className="text-xl text-muted-foreground">
-      A modal dialog that interrupts the user with important content and expects
-      a response.
+    <p className={cn("text-xl text-muted-foreground", className)} {...rest}>
+      {children}
     </p>
   );
 }
 
-export function TypographyLarge() {
-  return <div className="text-lg font-semibold">Are you absolutely sure?</div>;
-}
-
-export function TypographySmall() {
+/**
+ * Large
+ * @param LargeProps - Has all HTML Large attributes.
+ * @param LargeProps.className - The additional class name of the Large. (additional class will get merged by cn()).
+ * @param LargeProps.children - The text content of the Large. Default is "Large Placeholder".
+ * @returns A JSX element.
+ * @example
+ *  <TypographyLarge>
+ *      This is a Large
+ *  </TypographyLarge>
+ */
+export function TypographyLarge({
+  children = "Large Placeholder",
+  className,
+  ...rest
+}: LargeProps) {
   return (
-    <small className="text-sm font-medium leading-none">Email address</small>
+    <div className={cn("text-lg font-semibold", className)} {...rest}>
+      {children}
+    </div>
   );
 }
 
-export function TypographyMuted() {
+/**
+ * Small
+ * @param SmallProps - Has all HTML Small attributes.
+ * @param SmallProps.className - The additional class name of the Small. (additional class will get merged by cn()).
+ * @param SmallProps.children - The text content of the Small. Default is "Small Placeholder".
+ * @returns A JSX element.
+ * @example
+ *  <TypographySmall>
+ *      This is a Small
+ *  </TypographySmall>
+ */
+export function TypographySmall({
+  children = "Small Placeholder",
+  className,
+  ...rest
+}: SmallProps) {
   return (
-    <p className="text-sm text-muted-foreground">Enter your email address.</p>
+    <small
+      className={cn("text-sm font-medium leading-none", className)}
+      {...rest}
+    >
+      {children}
+    </small>
+  );
+}
+
+/**
+ * Muted
+ * @param MutedProps - Has all HTML Muted attributes.
+ * @param MutedProps.className - The additional class name of the Muted. (additional class will get merged by cn()).
+ * @param MutedProps.children - The text content of the Muted. Default is "Muted Placeholder".
+ * @returns A JSX element.
+ * @example
+ *  <TypographyMuted>
+ *      This is a Muted
+ *  </TypographyMuted>
+ */
+export function TypographyMuted({
+  children = "Muted Placeholder",
+  className,
+  ...rest
+}: MutedProps) {
+  return (
+    <p className={cn("text-sm text-muted-foreground", className)} {...rest}>
+      {children}
+    </p>
   );
 }

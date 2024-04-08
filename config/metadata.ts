@@ -1,9 +1,9 @@
-import type { Metadata } from "next";
+import { Metadata } from "./types";
 
 export const meta: Metadata = {
-	title: {
-		default: "Homelab",
-		template: "Homelab | %s",
-	},
-	description: "Homelab is a homescreen for your homelab",
+  description: "Homelab is a homescreen for your homelab",
+  title: {
+    default: "Homelab",
+    template: "Homelab | %s",
+  },
 };
