@@ -81,6 +81,7 @@ module.exports = {
   },
   plugins: ["prettier", "jsdoc", "sort-destructure-keys", "perfectionist"],
   rules: {
+    "@typescript-eslint/consistent-type-imports": "error",
     "@typescript-eslint/no-empty-interface": "off",
     "perfectionist/sort-imports": [
       "error",
@@ -91,12 +92,16 @@ module.exports = {
           "internal",
           "parent",
           "sibling",
-          "type",
+          "builtin-type",
+          "external-type",
+          "parent-type",
+          "sibling-type",
           "side-effect",
           "side-effect-style",
         ],
       },
     ],
+    "prefer-template": "error",
     "react/react-in-jsx-scope": "off",
     "sort-destructure-keys/sort-destructure-keys": [
       "error",

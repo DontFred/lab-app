@@ -1,12 +1,11 @@
-import { ThemeProvider } from "@/components/provider/theme-provider";
+import Provider from "@/components/provider";
 import { meta } from "@/config/metadata";
-import { Inter } from "next/font/google";
+import { GeistMono } from "geist/font/mono";
+import { GeistSans } from "geist/font/sans";
 
 import type { Metadata } from "next";
 
-import "./globals.css";
-
-const inter = Inter({ subsets: ["latin"] });
+import "@/styles/globals.css";
 
 export const metadata: Metadata = meta;
 
@@ -16,16 +15,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          disableTransitionOnChange
-          enableSystem
-        >
-          {children}
-        </ThemeProvider>
+    <html className={`${GeistSans.variable} ${GeistMono.variable}`} lang="en">
+      <body className={"sans min-h-screen"}>
+        <Provider>{children}</Provider>
       </body>
     </html>
   );
