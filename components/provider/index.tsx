@@ -1,6 +1,9 @@
 import { Fragment } from "react";
 
-import { ThemeProvider, useTheme as useThemeTheme } from "./theme-provider";
+import {
+  ThemeProvider,
+  useTheme as useProviderThemeUseTheme,
+} from "./theme-provider";
 
 import type { ProviderProps } from "./types";
 
@@ -57,4 +60,4 @@ export default function Provider({
   );
 }
 
-export { useThemeTheme };
+export { useProviderThemeUseTheme };

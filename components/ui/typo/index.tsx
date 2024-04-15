@@ -1,11 +1,14 @@
 import { cn } from "@/lib/utils";
+import { cva } from "class-variance-authority";
 
 import type {
   BlockquoteProps,
+  DescriptionProps,
   HeadingProps,
   InlineCodeProps,
   LargeProps,
   LeadProps,
+  ListItemProps,
   ListProps,
   MutedProps,
   ParagraphProps,
@@ -16,6 +19,7 @@ import type {
   TableHeadProps,
   TableProps,
   TableRowProps,
+  TypoProps,
 } from "./types";
 
 /**
@@ -37,7 +41,7 @@ export function TypographyH1({
   return (
     <h1
       className={cn(
-        "scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl",
+        "scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl [&:not(:first-child)]:mt-12",
         className
       )}
       {...rest}
@@ -66,7 +70,7 @@ export function TypographyH2({
   return (
     <h2
       className={cn(
-        "scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0",
+        "scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0 [&:not(:first-child)]:mt-10",
         className
       )}
       {...rest}
@@ -95,7 +99,7 @@ export function TypographyH3({
   return (
     <h3
       className={cn(
-        "scroll-m-20 text-2xl font-semibold tracking-tight",
+        "scroll-m-20 text-2xl font-semibold tracking-tight [&:not(:first-child)]:mt-8",
         className
       )}
       {...rest}
@@ -124,7 +128,7 @@ export function TypographyH4({
   return (
     <h4
       className={cn(
-        "scroll-m-20 text-xl font-semibold tracking-tight",
+        "scroll-m-20 text-xl font-semibold tracking-tight [&:not(:first-child)]:mt-6",
         className
       )}
       {...rest}
@@ -311,7 +315,7 @@ export function TD({ children, className, ...rest }: TableCellProps) {
 
 /**
  * List
- * @param ListProps - Has all HTML Unorderd List attributes.
+ * @param ListProps - Has all HTML unordered List attributes.
  * @param ListProps.className - The additional class name of the List. (additional class will get merged by cn()).
  * @param ListProps.children - The children of the List.
  * @returns A JSX element.
@@ -325,6 +329,29 @@ export function TypographyList({ children, className, ...rest }: ListProps) {
     <ul className={cn("my-6 ml-6 list-disc [&>li]:mt-2", className)} {...rest}>
       {children}
     </ul>
+  );
+}
+
+/**
+ * List Item
+ * @param ListItemProps - Has all HTML List Item attributes.
+ * @param ListItemProps.className - The additional class name of the List Item. (additional class will get merged by cn()).
+ * @param ListItemProps.children - The children of the List Item.
+ * @returns A JSX element.
+ * @example
+ *  <TypographyListItem>
+ *      ...
+ *  </TypographyListItem>
+ */
+export function TypographyListItem({
+  children,
+  className,
+  ...rest
+}: ListItemProps) {
+  return (
+    <li className={className} {...rest}>
+      {children}
+    </li>
   );
 }
 
@@ -450,4 +477,92 @@ export function TypographyMuted({
       {children}
     </p>
   );
+}
+
+/**
+ * Description
+ * @param DescriptionProps - Has all HTML Description attributes.
+ * @param DescriptionProps.className - The additional class name of the Description. (additional class will get merged by cn()).
+ * @param DescriptionProps.children - The text content of the Description. Default is "Description Placeholder".
+ * @param DescriptionProps.size - The size of the Description. The size is depending of the heading. Default is "h1".
+ * @returns A JSX element.
+ * @example
+ *  <TypographyDescription>
+ *      This is a Description
+ *  </TypographyDescription>
+ */
+export function TypographyDescription({
+  children,
+  className,
+  size,
+  ...rest
+}: DescriptionProps) {
+  const descriptionVariants = cva(
+    "font-semibold tracking-tight text-secondary-foreground",
+    {
+      defaultVariants: {
+        size: "h1",
+      },
+      variants: {
+        size: {
+          h1: "text-xl mt-2",
+          h2: "text-lg mt-2",
+          h3: "text-base mt-2",
+          h4: "text-sm mt-1",
+        },
+      },
+    }
+  );
+
+  return (
+    <div className={cn(descriptionVariants({ className, size }))} {...rest}>
+      {children}
+    </div>
+  );
+}
+
+/**
+ * Text
+ * @param props - Props for the Text component.
+ * @returns A JSX element.
+ * @example
+ *  <Text paragraph>Hello World</Text>
+ *  --> <p className="...">Hello World</p>
+ *
+ *  <Text heading size="h1">Hello World</Text>
+ *  --> <h1 className="...">Hello World</h1>
+ */
+export function Text(props: TypoProps) {
+  if (props.heading) {
+    switch (props.size) {
+      case "h1":
+        return <TypographyH1 {...props} />;
+      case "h2":
+        return <TypographyH2 {...props} />;
+      case "h3":
+        return <TypographyH3 {...props} />;
+      case "h4":
+        return <TypographyH4 {...props} />;
+      default:
+        return <TypographyH1 {...props} />;
+    }
+  } else if (props.blockquote) {
+    return <TypographyBlockquote {...props} />;
+  } else if (props.description) {
+    return <TypographyDescription {...props} />;
+  } else if (props.code) {
+    return <TypographyInlineCode {...props} />;
+  } else if (props.paragraph) {
+    return <TypographyP {...props} />;
+  } else if (props.list) {
+    return <TypographyList {...props} />;
+  } else if (props.listItem) {
+    return <TypographyListItem {...props} />;
+  } else if (props.lead) {
+    return <TypographyLead {...props} />;
+  } else if (props.large) {
+    return <TypographyLarge {...props} />;
+  } else if (props.small) {
+    return <TypographySmall {...props} />;
+  }
 }
