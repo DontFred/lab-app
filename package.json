@@ -6,11 +6,19 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint --fix && prettier . --write --plugin=prettier-plugin-tailwindcss",
+    "build:icons": "bunx tsx ./components/icons/build/build-icons.mts"
   },
   "dependencies": {
+    "@radix-ui/react-accordion": "^1.1.2",
+    "@radix-ui/react-separator": "^1.0.3",
+    "@radix-ui/react-slot": "^1.0.2",
+    "add": "^2.0.6",
+    "bun": "^1.1.3",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
+    "date-fns": "^3.6.0",
+    "geist": "^1.3.0",
     "lucide-react": "^0.365.0",
     "next": "14.1.4",
     "next-themes": "^0.3.0",
@@ -19,6 +27,7 @@
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
+    "@types/fs-extra": "^11.0.4",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
@@ -30,8 +39,12 @@
     "eslint-plugin-perfectionist": "^2.8.0",
     "eslint-plugin-prettier": "^5.1.3",
     "eslint-plugin-sort-destructure-keys": "^1.5.0",
+    "fs-extra": "^11.2.0",
+    "glob": "^10.3.12",
+    "node-html-parser": "^6.1.13",
     "postcss": "^8",
     "prettier": "^3.2.5",
+    "prettier-plugin-tailwindcss": "^0.5.13",
     "tailwindcss": "^3.3.0",
     "typescript": "^5",
     "typescript-eslint": "^7.5.0"
