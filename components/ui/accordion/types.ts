@@ -1,5 +1,13 @@
-import type { Content, Item, Trigger } from "@radix-ui/react-accordion";
+import type { Content, Item, Root, Trigger } from "@radix-ui/react-accordion";
 import type { ComponentPropsWithoutRef, ElementRef } from "react";
+
+export type AccordionElementRef = ElementRef<typeof Root>;
+
+export type AccordionProps = ComponentPropsWithoutRef<typeof Root>;
+
+export interface AccordionAdditionalProps {
+  size?: "default" | "small";
+}
 
 export type AccordionItemElementRef = ElementRef<typeof Item>;
 

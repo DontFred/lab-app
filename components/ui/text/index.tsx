@@ -156,7 +156,10 @@ export function TypographyP({
 }: ParagraphProps) {
   return (
     <p
-      className={cn("leading-7 [&:not(:first-child)]:mt-6", className)}
+      className={cn(
+        "text-base font-normal leading-5 [&:not(:first-child)]:mt-6",
+        className
+      )}
       {...rest}
     >
       {children}
