@@ -8,5 +8,11 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "always"
   },
-  "languageTool.language": "en-UK"
+  "editor.quickSuggestions": {
+    "strings": "on"
+  },
+  "languageTool.language": "en-UK",
+  "files.associations": {
+    "*.css": "tailwindcss"
+  }
 }

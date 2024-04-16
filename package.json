@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "run build:icons && next dev",
-    "build": "run build:icons && next build",
+    "dev": "npm run build:icons && next dev",
+    "build": "npm run build:icons && next build",
     "start": "next start",
     "lint": "next lint --fix && prettier . --write --plugin=prettier-plugin-tailwindcss",
     "build:icons": "npx tsx ./components/icons/build/build-icons.mts"

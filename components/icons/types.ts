@@ -5,17 +5,17 @@ import type { IconName } from "./icon-types";
 export type { IconName };
 
 interface IconGenealProps extends SVGProps<SVGSVGElement> {
-  childClassName?: string;
+  containerClassName?: string;
   name: IconName;
 }
 
 export type IconProps = IconGenealProps &
   (
     | {
-        childClassName?: undefined;
-        children?: undefined;
+        children: ReactNode | ReactNode[];
       }
     | {
-        children: ReactNode | ReactNode[];
+        children?: undefined;
+        containerClassName?: undefined;
       }
   );
