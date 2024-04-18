@@ -2,7 +2,7 @@ import { cn } from "@/lib/utils";
 
 import { Avatar, AvatarFallback, AvatarImage } from "../avatar";
 
-import type { AvatarGroupProps } from "./type";
+import type { AvatarGroupProps } from "./types";
 
 /**
  * AvatarGroup is a component that displays a group of avatars.

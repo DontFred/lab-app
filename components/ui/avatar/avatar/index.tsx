@@ -12,7 +12,7 @@ import type {
   AvatarImageElementRef,
   AvatarImageProps,
   AvatarProps,
-} from "./type";
+} from "./types";
 
 const Avatar = forwardRef<
   AvatarElementRef,
